@@ -17,6 +17,21 @@ function updateMainBalance(id){
     document.getElementById('mainBalance').innerText = netBalace;
 }
 
+// common function for history section
+
+function updateHistory(dtitleforlocation,dvalue){
+    const historyItem = document.createElement("div");
+     historyItem.className = 'border-2 border-gray-300 rounded-lg p-2 mb-4';
+     const historyTitle = document.getElementById(dtitleforlocation).innerText;
+     
+     historyItem.innerHTML = `
+     <p class="text-xl font-semibold">${dvalue} Taka is donated for ${historyTitle}</p>
+     <p class="text-xl font-normal opacity-70">Date: ${new Date()}</p>`;
+     const historyContainer = document.getElementById('history-list');
+     historyContainer.insertBefore(historyItem, historyContainer.firstChild);
+
+}
+
 // click for Noakhali
 document.getElementById('dBtnForNoakhali').addEventListener('click',function(){
     const dNoakhali = getInputValueById('dValueForNoakhali')
@@ -30,13 +45,16 @@ document.getElementById('dBtnForNoakhali').addEventListener('click',function(){
     updateMainBalance('dValueForNoakhali');
 
     // history section
-     const historyItem = document.createElement("div");
-     historyItem.className = 'border-2 border-gray-300 rounded-lg p-1';
-     historyItem.innerHTML = `
-     <p class="text-xl font-semibold">${dNoakhali} Taka is donated for Noakhali</p>
-     <p class="text-xl font-normal opacity-70">Date: ${new Date()}</p>`;
-     const historyContainer = document.getElementById('history-list');
-     historyContainer.insertBefore(historyItem, historyContainer.firstChild);
+    //  const historyItem = document.createElement("div");
+    //  historyItem.className = 'border-2 border-gray-300 rounded-lg p-2 mb-4';
+    //  const historyTitle = document.getElementById('donate-title-noakhali').innerText;
+    //  console.log(historyTitle)
+    //  historyItem.innerHTML = `
+    //  <p class="text-xl font-semibold">${dNoakhali} Taka is donated for ${historyTitle}</p>
+    //  <p class="text-xl font-normal opacity-70">Date: ${new Date()}</p>`;
+    //  const historyContainer = document.getElementById('history-list');
+    //  historyContainer.insertBefore(historyItem, historyContainer.firstChild);
+    updateHistory('donate-title-noakhali',dNoakhali);
 
 })
 
@@ -50,6 +68,8 @@ document.getElementById('dBtnForFeni').addEventListener('click',function(){
     document.getElementById('balanceFeni').innerText = netbalanceFeni;
     // update available main balance
     updateMainBalance('dValueForFeni');
+    // update historydonate-title-noakhali
+    updateHistory('donate-title-feni',dFeni);
 
 })
 // click for quota
@@ -61,9 +81,11 @@ document.getElementById('dBtnForQuota').addEventListener('click',function(){
     document.getElementById('balanceQuota').innerText = netbalanceQuota;
     // update available main balance
     updateMainBalance('dValueForQuota');
+    // update historydonate-title-noakhali
+    updateHistory('donate-title-quota',dQuota);
 })
 
-// =========== Click for History Section =============
+// =========== Click for History Button =============
 const historyBtn = document.getElementById('historyBtn')
 const donateBtn = document.getElementById('donationBtn')
 
@@ -76,6 +98,22 @@ historyBtn.addEventListener('click',function(){
 
     // donate section hide 
     document.getElementById('donate-section').classList.add('hidden');
+    // show the by default history section
+    document.getElementById('history-section').classList.remove('hidden');
+})
+
+// =========== Click for Donate Button =============
+donateBtn.addEventListener('click',function(){
+    donateBtn.classList.add('py-3', 'px-4', 'rounded-lg', 'bg-[#B4F461]', 'text-xl', 'font-semibold', 'mr-3');
+    donateBtn.classList.remove('opacity-70')
+    historyBtn.classList.remove('bg-[#B4F461]');
+    historyBtn.classList.add('border-2', 'border-gray-300','opacity-70');
+
+    // show the by default history section
+    document.getElementById('history-section').classList.add('hidden'); 
+    // donate section hide 
+    document.getElementById('donate-section').classList.remove('hidden');
+    
 })
 
 
