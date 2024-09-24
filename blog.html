@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom-assignment</title>
+    <!-- connect daisy ui cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- tailwind cdn -->
+
+    
+
+    <!-- google font lexend -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        .font-lexend{
+            font-family: "Lexend";
+        }
+    </style>
+
+    <!-- custom color -->
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+                'green_bg': '#B4F461',
+              } 
+            }
+          }
+        }
+      </script>
+
+
+</head>
+<body>
+    <header class="bg-[#e5e2da] py-3 mb-4">
+        <nav class="lg:w-9/12 mx-auto flex justify-around lg:justify-between">
+            <div>
+                <button class="py-3 rounded-lg px-6 bg-[#B4F461] text-xl font-semibold"><a href="./index.html">Home</a></button>
+            </div>
+            <div class="flex items-center text-xl font-semibold">
+                <img class="mr-2" src="assets/logo.png" alt="">
+                Donate Bangladesh
+            </div>
+            <div class="flex items-center">
+                <img src="assets/coin.png" alt="">
+                <p class="text-xl font-semibold opacity-70">5500</p>
+            </div>
+        </nav>
+    </header>
+    <main class="w-9/12 mx-auto font-lexend">
+        <h1 class="text-4xl font-extrabold mb-4">Important FAQ ?</h1>
+        <div>
+            <!-- 1st Question -->
+            <div class="collapse collapse-plus bg-base-200 mb-4">
+                <input type="radio" name="my-accordion-3" checked="checked" />
+                <div class="collapse-title text-xl font-medium">What is Document Object Model (DOM)?</div>
+                <div class="collapse-content">
+                  <p class="text-lg font-normal opacity-90">The Document Object Model (DOM) is a browser-provided interface that represents a web page's structure as a tree of nodes (elements, attributes, or text). It lets developers easily access, modify, and style a webpage dynamically using JavaScript, turning static content into interactive and dynamic experiences.</p>
+                </div>
+              </div>
+            <!-- 2nd Question -->
+              <div class="collapse collapse-plus bg-base-200 mb-4">
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title text-xl font-medium">How do you select an element from DOM ?</div>
+                <div class="collapse-content">
+                  <p>To select an element from the DOM, you can use several JavaScript methods:<br><br>
+
+                    <b>getElementById(id):</b> Selects an element by its unique ID.<br>
+                    <b>querySelector(selector):</b> Selects the first element that matches a CSS selector.<br>
+
+                    for example:<br>
+                    we get this element by using==>  document.getElementById('para') 
+                    These methods allow us to get element from DOM</p>
+                </div>
+              </div>
+            <!-- 3rd Question -->
+              <div class="collapse collapse-plus bg-base-200 mb-4">
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title text-xl font-medium">What is the event delegation in the context of the DOM, and why is it useful?</div>
+                <div class="collapse-content">
+                  <p><b>Event Delegation:</b>
+
+                    Event delegation is a powerful technique in JavaScript where you take advantage of the event bubbling mechanism to handle events more efficiently. Instead of adding event listeners to individual child elements, you attach a single event listener to a parent element and handle the events triggered by its child elements<br><br>
+
+                    <b>Why Event Delegation is Useful:</b>
+                    <ul>
+                        <li> Better Performance: Instead of adding multiple event listeners to individual elements, you use just one event listener for the parent. This is especially useful when dealing with large or dynamic lists of elements.</li><br>
+                        <li>Handles Dynamic Elements: When new elements are added to the DOM (e.g., dynamically inserted via JavaScript), you don't need to reattach event listeners. The parent element's listener will automatically capture events from newly added child elements.</li><br>
+                        <li>Simpler Code: Reduces the need for repeated event listener setup, leading to cleaner, more maintainable code.</li>
+                    </ul><br>
+                   
+                </p>
+                </div>
+              </div>
+            <!-- 4th Question -->
+              <div class="collapse collapse-plus bg-base-200 mb-4">
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title text-xl font-medium">How do manipulate an element's attributes and styles using the DOM ?</div>
+                <div class="collapse-content">
+                  <p>
+                    <b>1. Manipulating Element Attributes:</b><br><br>
+                    We can get, set, or remove attributes of HTML elements using methods like getAttribute(), setAttribute(), and removeAttribute(). <br>
+
+                        a.setAttribute(name, value): Adds or updates an attribute <br>
+                        b.getAttribute(name): Retrieves the value of an attribute. <br>
+                        c.removeAttribute(name): Removes an attribute from the element <br>
+                    <b>2. Manipulating Element Styles:</b> <br><br>
+                    
+                        We can manipulate an element's style using the style property in JavaScript. This allows me to change individual CSS properties directly. <br>
+
+                        a.element.style.property = value: Changes or adds a CSS property to the element. <br>
+                        b.element.style.cssText: Allows setting multiple styles at once via a string. <br>
+                  </p>
+                </div>
+              </div>
+        </div>
+    </main>
+   
+</body>
+</html>

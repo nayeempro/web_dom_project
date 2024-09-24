@@ -45,7 +45,7 @@
     <header id="navbar" class="bg-[#e5e2da] py-3 mb-4">
         <nav class="lg:w-9/12 mx-auto flex justify-around lg:justify-between">
             <div>
-                <button class="py-3 px-4 rounded-lg bg-[#B4F461] text-xl font-semibold">Blog</button>
+                <button class="py-3 px-6 rounded-lg bg-[#B4F461] text-xl font-semibold"><a href="./blog.html">Blog</a></button>
             </div>
             <div class="flex items-center text-xl font-semibold">
                 <img class="mr-2" src="assets/logo.png" alt="">
@@ -60,11 +60,11 @@
     <main id="body-content" class="w-9/12 mx-auto font-lexend ">
         <!-- donate and history button -->
         <div id="his-don-btn" class="w-1/5 mx-auto flex justify-center mb-4">
-            <button class="py-3 px-4 rounded-lg bg-[#B4F461] text-xl font-semibold mr-3">Donation</button>
-            <button class="py-3 px-4 rounded-lg bg-none font-medium opacity-70 border-2 border-gray-300 text-xl">History</button>
+            <button id="donationBtn" class="py-3 px-4 rounded-lg bg-[#B4F461] text-xl font-semibold mr-3">Donation</button>
+            <button id="historyBtn" class="py-3 px-4 rounded-lg bg-none font-medium  opacity-70 border-2 border-gray-300 text-xl">History</button>
         </div>
         <!-- Card container -->
-         <section>
+         <section id="donate-section">
             <!-- card section 1-->
          <section class="flex flex-col lg:flex-row p-8">
             <!-- image container -->
@@ -132,6 +132,12 @@
             </div>
          </section>
         </section>
+        <!-- History section -->
+         <section id="history-section">
+            <div id="history-list" class="border-2 border-indigo-400 rounded-lg p-5">
+
+            </div>
+         </section>
 
     </main>
     <footer></footer>

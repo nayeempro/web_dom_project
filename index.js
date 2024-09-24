@@ -28,6 +28,16 @@ document.getElementById('dBtnForNoakhali').addEventListener('click',function(){
 
     // update available main balance
     updateMainBalance('dValueForNoakhali');
+
+    // history section
+     const historyItem = document.createElement("div");
+     historyItem.className = 'border-2 border-gray-300 rounded-lg p-1';
+     historyItem.innerHTML = `
+     <p class="text-xl font-semibold">${dNoakhali} Taka is donated for Noakhali</p>
+     <p class="text-xl font-normal opacity-70">Date: ${new Date()}</p>`;
+     const historyContainer = document.getElementById('history-list');
+     historyContainer.insertBefore(historyItem, historyContainer.firstChild);
+
 })
 
 // click for Feni
@@ -54,5 +64,18 @@ document.getElementById('dBtnForQuota').addEventListener('click',function(){
 })
 
 // =========== Click for History Section =============
+const historyBtn = document.getElementById('historyBtn')
+const donateBtn = document.getElementById('donationBtn')
+
+historyBtn.addEventListener('click',function(){
+
+    historyBtn.classList.add('py-3', 'px-4', 'rounded-lg', 'bg-[#B4F461]', 'text-xl', 'font-semibold', 'mr-3');
+    historyBtn.classList.remove('opacity-70')
+    donateBtn.classList.remove('bg-[#B4F461]');
+    donateBtn.classList.add('border-2', 'border-gray-300','opacity-70');
+
+    // donate section hide 
+    document.getElementById('donate-section').classList.add('hidden');
+})
 
 
