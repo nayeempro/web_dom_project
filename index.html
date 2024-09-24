@@ -20,6 +20,9 @@
         .font-lexend{
             font-family: "Lexend";
         }
+        .blurred {
+            filter: blur(5px);
+        }
     </style>
 
     <!-- custom color -->
@@ -39,10 +42,10 @@
 
 </head>
 <body>
-    <header class="bg-[#F9F7F3] py-3 mb-4">
+    <header id="navbar" class="bg-[#e5e2da] py-3 mb-4">
         <nav class="lg:w-9/12 mx-auto flex justify-around lg:justify-between">
             <div>
-                <button class="btn bg-[#B4F461] text-xl font-semibold">Blog</button>
+                <button class="py-3 px-4 rounded-lg bg-[#B4F461] text-xl font-semibold">Blog</button>
             </div>
             <div class="flex items-center text-xl font-semibold">
                 <img class="mr-2" src="assets/logo.png" alt="">
@@ -50,17 +53,19 @@
             </div>
             <div class="flex items-center">
                 <img src="assets/coin.png" alt="">
-                <p class="text-xl font-semibold opacity-70">5500</p>
+                <p class="text-xl font-semibold opacity-70"><span id="mainBalance">5500</span></p>
             </div>
         </nav>
     </header>
-    <main class="w-9/12 mx-auto font-lexend">
+    <main id="body-content" class="w-9/12 mx-auto font-lexend ">
         <!-- donate and history button -->
-        <div class="w-1/5 mx-auto flex justify-center mb-4">
-            <button class="btn bg-[#B4F461] text-xl font-semibold mr-3">Donation</button>
-            <button class="btn bg-none font-medium opacity-70 border-2 border-gray-300 text-xl">History</button>
+        <div id="his-don-btn" class="w-1/5 mx-auto flex justify-center mb-4">
+            <button class="py-3 px-4 rounded-lg bg-[#B4F461] text-xl font-semibold mr-3">Donation</button>
+            <button class="py-3 px-4 rounded-lg bg-none font-medium opacity-70 border-2 border-gray-300 text-xl">History</button>
         </div>
-        <!-- card section 1-->
+        <!-- Card container -->
+         <section>
+            <!-- card section 1-->
          <section class="flex flex-col lg:flex-row p-8">
             <!-- image container -->
             <div class="w-11/12 lg:w-1/2">
@@ -72,14 +77,14 @@
             <div class="w-11/12 lg:w-1/2 flex flex-col items-start justify-around">
                <div class="flex items-center my-2">
                     <img class="mr-2" src="assets/coin.png" alt="">
-                    <p class="text-xl font-semibold opacity-70"><span>0</span> BDT</p>
+                    <p class="text-xl font-semibold opacity-70"><span id="balanceNoakhali">0</span> BDT</p>
                 </div>
                 <h1 class="text-xl font-bold">Donate for Flood at Noakhali, Bangladesh</h1>
                 <p class="text-base font-light opacity-70">
                         The recent floods in Noakhali have caused significant damage to homes  infrastructure. Your donation will help provide essential supplies and  to those affected by this disaster. Every contribution, big or small, makes  difference. Please join us in supporting the relief efforts and making a positive impact on the lives of those in need.
                 </p>
-                <input class="input-lg w-full my-4" type="text" placeholder="Write Donation Amount">
-                <button class="btn bg-[#B4F461] text-xl font-semibold w-full">Donate Now</button>
+                <input id="dValueForNoakhali" class="border-2 border-gray-300 rounded-lg input-lg w-full my-4" type="text" placeholder="Write Donation Amount">
+                <button id="dBtnForNoakhali" class="py-3 rounded-lg bg-[#B4F461] text-xl font-semibold w-full">Donate Now</button>
             </div>
          </section>
         <!-- card section 2-->
@@ -94,14 +99,14 @@
             <div class="w-11/12 lg:w-1/2 flex flex-col items-start justify-around">
                <div class="flex items-center my-2">
                     <img class="mr-2" src="assets/coin.png" alt="">
-                    <p class="text-xl font-semibold opacity-70"> <span>600</span> BDT</p>
+                    <p class="text-xl font-semibold opacity-70"> <span id="balanceFeni">600</span> BDT</p>
                 </div>
                 <h1 class="text-xl font-bold">Donate for Flood Relief in Feni,Bangladesh</h1>
                 <p class="text-base font-light opacity-70">
                     The recent floods in Feni have devastated local communities, leading to severe disruption and loss. Your generous donation will help provide immediate aid, including food, clean water, and medical supplies, to those affected by this calamity. Together, we can offer crucial support and help rebuild lives in the aftermath of this disaster. Every contribution counts towards making a real difference. Please consider donating today to assist those in urgent need.
                 </p>
-                <input class="input-lg w-full my-4" type="text" placeholder="Write Donation Amount">
-                <button class="btn bg-[#B4F461] text-xl font-semibold w-full">Donate Now</button>
+                <input id="dValueForFeni" class="border-2 border-gray-300 rounded-lg input-lg w-full my-4" type="text" placeholder="Write Donation Amount">
+                <button id="dBtnForFeni" class="py-3 rounded-lg bg-[#B4F461] text-xl font-semibold w-full">Donate Now</button>
             </div>
          </section>
         <!-- card section 3-->
@@ -116,18 +121,20 @@
             <div class="w-11/12 lg:w-1/2 flex flex-col items-start justify-around">
                <div class="flex items-center my-2">
                     <img class="mr-2" src="assets/coin.png" alt="">
-                    <p class="text-xl font-semibold opacity-70"><span>2400</span> BDT</p>
+                    <p class="text-xl font-semibold opacity-70"><span id="balanceQuota">2400</span> BDT</p>
                 </div>
                 <h1 class="text-xl font-bold">Aid for Injured in the Quota Movement</h1>
                 <p class="text-base font-light opacity-70">
                     The recent Quota movement has resulted in numerous injuries and significant hardship for many individuals. Your support is crucial in providing medical assistance, rehabilitation, and necessary supplies to those affected. By contributing, you help ensure that injured individuals receive the care and support they need during this challenging time. Every donation plays a vital role in alleviating their suffering and aiding in their recovery. Please consider making a donation to support these brave individuals in their time of need.
                 </p>
-                <input class="input-lg w-full my-4" type="text" placeholder="Write Donation Amount">
-                <button class="btn bg-[#B4F461] text-xl font-semibold w-full">Donate Now</button>
+                <input id="dValueForQuota" class="border-2 border-gray-300 rounded-lg input-lg w-full my-4" type="text" placeholder="Write Donation Amount">
+                <button id="dBtnForQuota" class="py-3 rounded-lg bg-[#B4F461] text-xl font-semibold w-full">Donate Now</button>
             </div>
          </section>
+        </section>
 
     </main>
     <footer></footer>
+    <script src="index.js"></script>
 </body>
 </html>
