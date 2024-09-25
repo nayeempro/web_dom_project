@@ -1,11 +1,23 @@
 // Function that is globally
 function getInputValueById(id){
-    const value = parseFloat(document.getElementById(id).value); 
-    return value;
+    let value = document.getElementById(id).value;
+    // parseFloat give 9kk ---> 9 so it's a problem
+    if(isNaN(value) === false){
+        value = parseFloat(value);
+    }
+    
+    if(isNaN(value) || value<=0) {
+        //alert("Invalid Amount");
+        return 'Invalid';
+    }else{
+        return value;
+    }
+    
 }
 function getTextValueById(id){
-    const value = parseFloat(document.getElementById(id).innerText); 
+    const value = parseFloat(document.getElementById(id).innerText);
     return value;
+ 
 }
 // function for update main balance
 function updateMainBalance(id){
@@ -13,11 +25,16 @@ function updateMainBalance(id){
     const donateValue = getInputValueById(id)
     // update main value
     const netBalace = mainBalance - donateValue;
-    // set main Balance
-    document.getElementById('mainBalance').innerText = netBalace;
+    if(netBalace < 0 ){
+        alert("Balance not available")
+    }else{
+        // set main Balance
+      document.getElementById('mainBalance').innerText = netBalace;
+    }
+    
 }
 
-// common function for history section
+//global function for history section
 
 function updateHistory(dtitleforlocation,dvalue){
     const historyItem = document.createElement("div");
@@ -31,51 +48,71 @@ function updateHistory(dtitleforlocation,dvalue){
      historyContainer.insertBefore(historyItem, historyContainer.firstChild);
 
 }
+// global function for popup modal
+
+function modalOpen(){
+    const modal = document.getElementById('modal-click');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    modal.showModal();
+    closeModalBtn.addEventListener('click', function(){
+        modal.close();
+      });
+}
+
 
 // click for Noakhali
 document.getElementById('dBtnForNoakhali').addEventListener('click',function(){
-    const dNoakhali = getInputValueById('dValueForNoakhali')
+    const dNoakhali = getInputValueById('dValueForNoakhali');
     const balanceNoakhali = getTextValueById('balanceNoakhali');
-    const netbalanceNoakhali = dNoakhali + balanceNoakhali;
+    console.log("This for noakhali",dNoakhali,balanceNoakhali);
+    if (dNoakhali !== 'Invalid'){
+        const netbalanceNoakhali = dNoakhali + balanceNoakhali;
 
     // update donation for Noakhali
     document.getElementById('balanceNoakhali').innerText = netbalanceNoakhali;
 
     // update available main balance
     updateMainBalance('dValueForNoakhali');
-
-    // history section
-    //  const historyItem = document.createElement("div");
-    //  historyItem.className = 'border-2 border-gray-300 rounded-lg p-2 mb-4';
-    //  const historyTitle = document.getElementById('donate-title-noakhali').innerText;
-    //  console.log(historyTitle)
-    //  historyItem.innerHTML = `
-    //  <p class="text-xl font-semibold">${dNoakhali} Taka is donated for ${historyTitle}</p>
-    //  <p class="text-xl font-normal opacity-70">Date: ${new Date()}</p>`;
-    //  const historyContainer = document.getElementById('history-list');
-    //  historyContainer.insertBefore(historyItem, historyContainer.firstChild);
+    // update history
     updateHistory('donate-title-noakhali',dNoakhali);
+
+    // model open
+    modalOpen();
+    }else{
+        alert("Invalid Amount");
+    }
+    
 
 })
 
 // click for Feni
 document.getElementById('dBtnForFeni').addEventListener('click',function(){
     const dFeni = getInputValueById('dValueForFeni');
-    const balanceFeni = getTextValueById('balanceFeni')
+    const balanceFeni = getTextValueById('balanceFeni');
+    console.log("This for feni",dFeni,balanceFeni)
+    if( dFeni !== 'Invalid'){
     const netbalanceFeni = dFeni + balanceFeni;
-    const mainBalance = getTextValueById('mainBalance');
+    //const mainBalance = getTextValueById('mainBalance');
     // update donation for Feni
     document.getElementById('balanceFeni').innerText = netbalanceFeni;
     // update available main balance
     updateMainBalance('dValueForFeni');
     // update historydonate-title-noakhali
     updateHistory('donate-title-feni',dFeni);
+        // model open
+        modalOpen();
+    }else{
+        alert("Invalid Amount");
+    }
 
 })
 // click for quota
 document.getElementById('dBtnForQuota').addEventListener('click',function(){
     const dQuota = getInputValueById('dValueForQuota')
     const balanceQuota = getTextValueById('balanceQuota');
+    console.log("This for quata",dQuota,balanceQuota)
+
+    if(dQuota !== 'Invalid'){
     const netbalanceQuota = dQuota + balanceQuota;
     // update donation for quota 
     document.getElementById('balanceQuota').innerText = netbalanceQuota;
@@ -83,6 +120,11 @@ document.getElementById('dBtnForQuota').addEventListener('click',function(){
     updateMainBalance('dValueForQuota');
     // update historydonate-title-noakhali
     updateHistory('donate-title-quota',dQuota);
+        // model open
+        modalOpen();
+    }else{
+        alert("Invalid Amount");
+    }
 })
 
 // =========== Click for History Button =============
