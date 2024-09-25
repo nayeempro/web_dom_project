@@ -26,7 +26,7 @@ function updateMainBalance(id){
     // update main value
     const netBalace = mainBalance - donateValue;
     if(netBalace < 0 ){
-        alert("Balance not available");
+        alert("Insufficient Balance");
         return 'insuff'
     }else{
         // set main Balance
@@ -66,11 +66,11 @@ function modalOpen(){
 document.getElementById('dBtnForNoakhali').addEventListener('click',function(){
     const dNoakhali = getInputValueById('dValueForNoakhali');
     const balanceNoakhali = getTextValueById('balanceNoakhali');
-    console.log("This for noakhali",dNoakhali,balanceNoakhali);
+    // check valid input balance
     if (dNoakhali !== 'Invalid'){
         const netbalanceNoakhali = dNoakhali + balanceNoakhali;
 
-    // update available main balance
+    // update available main balance and validate
     const updateBal = updateMainBalance('dValueForNoakhali');
     if(updateBal === 'insuff'){
         return;
@@ -83,7 +83,7 @@ document.getElementById('dBtnForNoakhali').addEventListener('click',function(){
     // model open
     modalOpen();
     }else{
-        alert("Invalid Amount");
+        alert("Invalid Donation Amount");
     }
     
 
@@ -93,20 +93,24 @@ document.getElementById('dBtnForNoakhali').addEventListener('click',function(){
 document.getElementById('dBtnForFeni').addEventListener('click',function(){
     const dFeni = getInputValueById('dValueForFeni');
     const balanceFeni = getTextValueById('balanceFeni');
-    console.log("This for feni",dFeni,balanceFeni)
+    //console.log("This for feni",dFeni,balanceFeni)
     if( dFeni !== 'Invalid'){
     const netbalanceFeni = dFeni + balanceFeni;
     //const mainBalance = getTextValueById('mainBalance');
+    
+    // update available main balance
+    const updateBal = updateMainBalance('dValueForFeni');
+    if(updateBal === 'insuff'){
+        return;
+    }
     // update donation for Feni
     document.getElementById('balanceFeni').innerText = netbalanceFeni;
-    // update available main balance
-    updateMainBalance('dValueForFeni');
     // update historydonate-title-noakhali
     updateHistory('donate-title-feni',dFeni);
         // model open
         modalOpen();
     }else{
-        alert("Invalid Amount");
+        alert("Invalid Donation Amount");
     }
 
 })
@@ -114,20 +118,23 @@ document.getElementById('dBtnForFeni').addEventListener('click',function(){
 document.getElementById('dBtnForQuota').addEventListener('click',function(){
     const dQuota = getInputValueById('dValueForQuota')
     const balanceQuota = getTextValueById('balanceQuota');
-    console.log("This for quata",dQuota,balanceQuota)
 
     if(dQuota !== 'Invalid'){
     const netbalanceQuota = dQuota + balanceQuota;
+    
+    // update available main balance
+    const updateBal = updateMainBalance('dValueForQuota');
+    if(updateBal === 'insuff'){
+        return;
+    }
     // update donation for quota 
     document.getElementById('balanceQuota').innerText = netbalanceQuota;
-    // update available main balance
-    updateMainBalance('dValueForQuota');
     // update historydonate-title-noakhali
     updateHistory('donate-title-quota',dQuota);
         // model open
         modalOpen();
     }else{
-        alert("Invalid Amount");
+        alert("Invalid Donation Amount");
     }
 })
 
