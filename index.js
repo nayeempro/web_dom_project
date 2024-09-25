@@ -26,11 +26,13 @@ function updateMainBalance(id){
     // update main value
     const netBalace = mainBalance - donateValue;
     if(netBalace < 0 ){
-        alert("Balance not available")
+        alert("Balance not available");
+        return 'insuff'
     }else{
         // set main Balance
       document.getElementById('mainBalance').innerText = netBalace;
     }
+
     
 }
 
@@ -68,11 +70,13 @@ document.getElementById('dBtnForNoakhali').addEventListener('click',function(){
     if (dNoakhali !== 'Invalid'){
         const netbalanceNoakhali = dNoakhali + balanceNoakhali;
 
+    // update available main balance
+    const updateBal = updateMainBalance('dValueForNoakhali');
+    if(updateBal === 'insuff'){
+        return;
+    }
     // update donation for Noakhali
     document.getElementById('balanceNoakhali').innerText = netbalanceNoakhali;
-
-    // update available main balance
-    updateMainBalance('dValueForNoakhali');
     // update history
     updateHistory('donate-title-noakhali',dNoakhali);
 
